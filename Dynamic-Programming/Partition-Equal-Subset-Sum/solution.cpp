@@ -1,3 +1,21 @@
+# Partition Equal Subset Sum
+## 🧠 Problem
+Check if array can be divided into two subsets with equal sum.
+## ⚡ Approach
+* Find total sum
+* If odd → return false
+* Else target = sum / 2
+* Try include/exclude recursion
+## ⏱ Complexity
+* Time: O(2^n)
+* Space: O(n)
+
+## 🚀 Future Improvement
+
+* Use DP (Memoization) for optimization
+
+
+
 class Solution {
 public:
     bool solve(vector<int>& nums, int target, int i){
