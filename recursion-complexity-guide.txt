@@ -1,0 +1,267 @@
+# Recursion Time Complexity & Space Complexity - Full Documentation
+
+## Overview
+
+This guide explains how to analyze recursive functions deeply, especially for coding interviews, DSA, and competitive programming.
+
+---
+
+## 1. Definitions
+
+### Time Complexity
+
+Time complexity measures how the running time grows with input size `n`.
+It counts the number of operations performed.
+
+Common orders:
+
+* O(1) Constant
+* O(log n) Logarithmic
+* O(n) Linear
+* O(n log n)
+* O(n^2)
+* O(2^n)
+* O(n!)
+
+### Space Complexity
+
+Space complexity measures extra memory used by the algorithm.
+For recursion, this usually includes:
+
+* Call stack memory
+* Local variables in each call
+* Extra arrays/maps/vectors
+
+---
+
+## 2. Core Idea for Recursive Functions
+
+For recursion:
+
+* Time Complexity = Total recursive calls × Work inside each call
+* Space Complexity = Maximum active calls on stack
+
+---
+
+## 3. How to Find Time Complexity
+
+## Method 1: Recurrence Relation
+
+Write function cost as:
+T(n) = recursive work + current work
+
+Examples:
+
+* T(n) = T(n-1) + O(1) => O(n)
+* T(n) = T(n/2) + O(1) => O(log n)
+* T(n) = 2T(n/2) + O(n) => O(n log n)
+
+---
+
+## Method 2: Recursion Tree
+
+Convert calls into a tree.
+Count:
+
+* Number of levels
+  n- Work per level
+  Then sum all levels.
+
+Used in Merge Sort, Quick Sort analysis.
+
+---
+
+## Method 3: Expansion Method
+
+Expand recurrence repeatedly until base case.
+
+Example:
+T(n) = T(n-1) + 1
+= T(n-2) + 2
+= T(n-3) + 3
+...
+= O(n)
+
+---
+
+## Method 4: Master Theorem
+
+For divide and conquer:
+T(n) = aT(n/b) + f(n)
+
+Used in:
+
+* Merge Sort
+* Binary recursion
+* Tree divide problems
+
+---
+
+## Method 5: Choice Tree / Backtracking Count
+
+If each level has multiple choices:
+Total nodes ≈ branching_factor ^ depth
+
+Examples:
+
+* Subsets => 2^n
+* Permutations => n!
+* Include/Exclude recursion => 2^n
+
+---
+
+## 4. How to Find Space Complexity
+
+## Method 1: Stack Depth
+
+If each call waits for child call:
+
+f(n) -> f(n-1)
+Depth = n
+Space = O(n)
+
+## Method 2: Halving Input
+
+f(n) -> f(n/2)
+Depth = log n
+Space = O(log n)
+
+## Method 3: Extra Memory Structures
+
+Memoization:
+
+* DP array O(n)
+* Stack O(n)
+  Total = O(n)
+
+---
+
+## 5. Common Recursive Patterns
+
+### Pattern A: Linear Recursion
+
+f(n-1)
+Time O(n), Space O(n)
+
+### Pattern B: Binary Recursion
+
+f(n-1) + f(n-2)
+Time O(2^n), Space O(n)
+
+### Pattern C: Divide in Half
+
+f(n/2)
+Time O(log n), Space O(log n)
+
+### Pattern D: Merge Style
+
+2f(n/2) + merge work O(n)
+Time O(n log n), Space O(log n) or O(n)
+
+### Pattern E: Subsets
+
+Two choices per element
+Time O(2^n)
+Space O(n)
+
+### Pattern F: Permutations
+
+Choose one among remaining items
+Time O(n!)
+Space O(n)
+
+---
+
+## 6. Important Examples
+
+## Factorial
+
+factorial(n) = n * factorial(n-1)
+Time O(n)
+Space O(n)
+
+## Binary Search Recursive
+
+Time O(log n)
+Space O(log n)
+
+## Fibonacci Naive
+
+fib(n-1) + fib(n-2)
+Time O(2^n)
+Space O(n)
+
+## Fibonacci Memoized
+
+Time O(n)
+Space O(n)
+
+## Merge Sort
+
+Time O(n log n)
+Space O(n)
+
+---
+
+## 7. Quick Shortcut Rules
+
+* One call, n -> n-1 => O(n)
+* One call, n -> n/2 => O(log n)
+* Two calls every level => exponential often
+* Include / exclude choices => O(2^n)
+* Rearranging all orders => O(n!)
+
+---
+
+## 8. How to Analyze Any Recursive Code Fast
+
+Step 1: Count recursive calls from one node.
+Step 2: Check how input size changes.
+Step 3: Check work done before/after calls.
+Step 4: Count maximum depth.
+Step 5: Compute total nodes or recurrence.
+
+---
+
+## 9. Interview Notes
+
+Always mention both:
+
+* Auxiliary space (extra memory)
+* Recursion stack space
+
+Example:
+"Time Complexity O(n), Space Complexity O(n) due to recursion stack."
+
+---
+
+## 10. Common Mistakes
+
+* Ignoring recursion stack memory
+* Counting only one branch in tree recursion
+* Forgetting loop inside each recursive call
+* Confusing memoized vs naive recursion
+
+---
+
+## 11. Cheat Sheet Table
+
+| Pattern      | Time       | Space    |
+| ------------ | ---------- | -------- |
+| f(n-1)       | O(n)       | O(n)     |
+| f(n/2)       | O(log n)   | O(log n) |
+| fib naive    | O(2^n)     | O(n)     |
+| subsets      | O(2^n)     | O(n)     |
+| permutations | O(n!)      | O(n)     |
+| merge sort   | O(n log n) | O(n)     |
+
+---
+
+## Final Formula
+
+Time Complexity = Number of calls × Work per call
+Space Complexity = Maximum stack depth + extra memory
+
+---
+
+End of Guide.
